@@ -7,3 +7,23 @@ Version: 1.0
 
 */
 
+.header__menu ul li a[aria-current="page"] {
+    background: #e53637;
+    color: #ffffff;
+}
+
+.header__menu ul li > .sub-menu {
+    position: absolute;
+    left: 0;
+    top: 82px;
+    width: 150px;
+    background: #ffffff;
+    text-align: left;
+    padding: 5px 0;
+    z-index: 9;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all, 0.3s;
+    -o-transition: all, 0.3s;
+    transition: all, 0.3s;
+}
