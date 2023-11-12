@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html">
+                        <a href="<?php echo get_home_url(); ?>">
                             <img src="<?php echo THEME_URL . '/assets/img/logo.png' ?>" alt="">
                         </a>
                     </div>

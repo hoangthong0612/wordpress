@@ -108,5 +108,21 @@
     }
 
     add_action('wp_enqueue_scripts','xemphim_style' );
+
+
+    function video_custom_post_type() {
+        register_post_type('video',
+            array(
+                'labels'      => array(
+                    'name'          => __( 'Video', 'textdomain' ),
+                    'singular_name' => __( 'Video', 'textdomain' ),
+                ),
+                'public'      => true,
+                'has_archive' => true,
+                'rewrite'     => array( 'slug' => 'video' ), // my custom slug
+            )
+        );
+    }
+    add_action('init', 'video_custom_post_type');
 ?>
 
