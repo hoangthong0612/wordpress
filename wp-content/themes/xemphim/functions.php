@@ -119,10 +119,31 @@
                 ),
                 'public'      => true,
                 'has_archive' => true,
+                'show_ui' => true,
+                'show_in_menu ' => true,
+                'query_var' => true,
+                'menu_position' => 2,
                 'rewrite'     => array( 'slug' => 'video' ), // my custom slug
+                'menu_icon' => 'dashicons-format-video',
+                'supports' => array(
+                    'title',
+                    'editor',
+                    'comments',
+                    'revisions',
+                    'trackbacks',
+                    'excerpt',
+                    'page-attributes',
+                    'thumbnail',
+                    'custom-fields',
+                    'post-formats',
+                    'title',
+                ),
             )
         );
     }
     add_action('init', 'video_custom_post_type');
+    
+
+    
 ?>
 
