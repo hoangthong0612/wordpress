@@ -111,39 +111,121 @@
 
 
     function video_custom_post_type() {
-        register_post_type('video',
-            array(
-                'labels'      => array(
-                    'name'          => __( 'Video', 'textdomain' ),
-                    'singular_name' => __( 'Video', 'textdomain' ),
-                ),
-                'public'      => true,
-                'has_archive' => true,
-                'show_ui' => true,
-                'show_in_menu ' => true,
-                'query_var' => true,
-                'menu_position' => 2,
-                'rewrite'     => array( 'slug' => 'video' ), // my custom slug
-                'menu_icon' => 'dashicons-format-video',
-                'supports' => array(
-                    'title',
-                    'editor',
-                    'comments',
-                    'revisions',
-                    'trackbacks',
-                    'excerpt',
-                    'page-attributes',
-                    'thumbnail',
-                    'custom-fields',
-                    'post-formats',
-                    'title',
-                ),
-            )
+        $labels = array(
+            'name'               => __( 'Anime', 'text-domain' ),
+            'singular_name'      => __( 'Anime', 'text-domain' ),
+            'add_new'            => _x( 'Add New Anime', 'text-domain', 'text-domain' ),
+            'add_new_item'       => __( 'Add New Anime', 'text-domain' ),
+            'edit_item'          => __( 'Edit Anime', 'text-domain' ),
+            'new_item'           => __( 'New Anime', 'text-domain' ),
+            'view_item'          => __( 'View Anime', 'text-domain' ),
+            'search_items'       => __( 'Search Anime', 'text-domain' ),
+            'not_found'          => __( 'Không tìm thấy Anime', 'text-domain' ),
+            'not_found_in_trash' => __( 'Không tìm thấy Anime', 'text-domain' ),
+            'parent_item_colon'  => __( '', 'text-domain' ),
+            'menu_name'          => __( 'Anime', 'text-domain' ),
         );
+        $args = array(
+            'labels'              => $labels,
+            'hierarchical'        => false,
+            'description'         => 'description',
+            'taxonomies'          => array('dmdv'),
+            'public'              => true,
+            'show_ui'             => true,
+            'show_in_menu'        => true,
+            'show_in_admin_bar'   => true,
+            'menu_position'       => null,
+            'menu_icon'           => 'dashicons-format-video',
+            'show_in_nav_menus'   => true,
+            'publicly_queryable'  => true,
+            'exclude_from_search' => false,
+            'has_archive'         => true,
+            'query_var'           => true,
+            'can_export'          => true,
+            'rewrite'             => array('slug' => 'anime' ),
+            'capability_type'     => 'post',
+            'supports'            => array(
+                'title',
+                'editor',
+                'author',
+                'thumbnail',
+                'excerpt',
+                'custom-fields',
+                'trackbacks',
+                'comments',
+                'revisions',
+                'page-attributes',
+                'post-formats',
+            ),
+        );
+        register_post_type( 'video-anime', $args );
+
+
+        //----------------taxonomy
+        $labels_dv = array(
+            'name'                  => _x( 'Danh mục anime', 'Taxonomy plural name', 'text-domain' ),
+            'singular_name'         => _x( 'Danh mục anime', 'Taxonomy singular name', 'text-domain' ),
+            'search_items'          => __( 'Search Plural anime', 'text-domain' ),
+            'popular_items'         => __( 'Popular Plural anime', 'text-domain' ),
+            'all_items'             => __( 'All Plural anime', 'text-domain' ),
+            'parent_item'           => __( 'Parent Singular anime', 'text-domain' ),
+            'parent_item_colon'     => __( 'Parent Singular anime', 'text-domain' ),
+            'edit_item'             => __( 'Edit Singular anime', 'text-domain' ),
+            'update_item'           => __( 'Update Singular anime', 'text-domain' ),
+            'add_new_item'          => __( 'Add New Singular anime', 'text-domain' ),
+            'new_item_name'         => __( 'New Singular anime', 'text-domain' ),
+            'add_or_remove_items'   => __( 'Add or remove Plural anime', 'text-domain' ),
+            'choose_from_most_used' => __( 'Choose from most used Plural anime', 'text-domain' ),
+            'menu_name'             => __( 'Danh mục anime', 'text-domain' ),
+        );
+        $args_anime = array(
+            'labels'            => $labels_dv,
+            'public'            => true,
+            'show_in_nav_menus' => true,
+            'show_admin_column' => true,
+            'hierarchical'      => true,
+            'show_tagcloud'     => true,
+            'show_ui'           => true,
+            'query_var'         => true,
+            'rewrite'           => array('slug' => 'danh-muc-anime'),
+            'capabilities'      => array(),
+        );
+        register_taxonomy( 'tax_anime_video', 'video-anime', $args_anime );
+
+
+        $labels_category = array(
+            'name'                  => _x( 'Thể loại', 'Taxonomy plural name', 'text-domain' ),
+            'singular_name'         => _x( 'Thể loại', 'Taxonomy singular name', 'text-domain' ),
+            'search_items'          => __( 'Search Plural Thể loại', 'text-domain' ),
+            'popular_items'         => __( 'Popular Plural Thể loại', 'text-domain' ),
+            'all_items'             => __( 'All Plural Thể loại', 'text-domain' ),
+            'parent_item'           => __( 'Parent Singular Thể loại', 'text-domain' ),
+            'parent_item_colon'     => __( 'Parent Singular Thể loại', 'text-domain' ),
+            'edit_item'             => __( 'Edit Singular Thể loại', 'text-domain' ),
+            'update_item'           => __( 'Update Singular Thể loại', 'text-domain' ),
+            'add_new_item'          => __( 'Add New Singular Thể loại', 'text-domain' ),
+            'new_item_name'         => __( 'New Singular Thể loại', 'text-domain' ),
+            'add_or_remove_items'   => __( 'Add or remove Plural Thể loại', 'text-domain' ),
+            'choose_from_most_used' => __( 'Choose from most used Plural Thể loại', 'text-domain' ),
+            'menu_name'             => __( 'Danh mục Thể loại', 'text-domain' ),
+        );
+        $args_category = array(
+            'labels'            => $labels_category,
+            'public'            => true,
+            'show_in_nav_menus' => true,
+            'show_admin_column' => false,
+            'hierarchical'      => true,
+            'show_tagcloud'     => true,
+            'show_ui'           => true,
+            'query_var'         => true,
+            'rewrite'           => array('slug' => 'the-loai'),
+            'capabilities'      => array(),
+        );
+        register_taxonomy( 'tax-category-anime', 'video-anime', $args_category );
     }
     add_action('init', 'video_custom_post_type');
-    
 
-    
+
+
 ?>
 

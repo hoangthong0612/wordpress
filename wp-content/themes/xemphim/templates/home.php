@@ -66,7 +66,12 @@
                         </div>
                         <div class="row">
                             <?php 
-                                if ( have_posts() ) : while ( have_posts() ) : the_post();
+                                $args = array(
+                                    'post_type' => 'video-anime',
+                                );
+                                $query = new WP_Query( $args );
+                                
+                                if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
                                     get_template_part("content", get_post_format() );       
                                 endwhile;
                                 else :

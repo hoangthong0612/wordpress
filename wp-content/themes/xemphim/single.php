@@ -1,4 +1,3 @@
-<?php /* Template Name: My Custom Page */ ?>
 
 <?php get_header() ?>
     <!-- Hero Section Begin -->

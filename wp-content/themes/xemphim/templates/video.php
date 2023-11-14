@@ -1,8 +1,8 @@
-<?php /* Template Name: Video template */ ?>
+<?php /* Template Name: video-anime */ ?>
 
 <?php get_header() ?>
 <div class="container">
-    <?php the_title() ?>
+    123123123123123
 </div>
 
 <?php get_footer() ?>
